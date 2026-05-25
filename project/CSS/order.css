@@ -1,0 +1,124 @@
+/* ==================== ORDERS PAGE ==================== */
+.orders-page {
+  max-width: 1350px;
+  margin: 40px auto;
+  padding: 0 2rem;
+}
+
+.page-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #6B21A8;
+  margin-bottom: 30px;
+}
+
+/* Main Container */
+.orders-container {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Table */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table thead {
+  background: #f8f5ff;
+}
+
+.orders-table th {
+  padding: 18px 24px;
+  text-align: left;
+  color: #6B21A8;
+  font-weight: 600;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.orders-table th:nth-child(1) { width: 48%; }
+.orders-table th:nth-child(2) { width: 14%; }
+.orders-table th:nth-child(3) { width: 8%; }
+.orders-table th:nth-child(4) { width: 12%; }
+.orders-table th:nth-child(5) { width: 10%; }
+.orders-table th:nth-child(6) { width: 14%; }
+
+/* Table Body */
+.orders-table td {
+  padding: 28px 24px;
+  border-bottom: 1px solid #f0e6ff;
+  vertical-align: middle;
+}
+
+.orders-table td:not(.product-cell) {
+  text-align: center;
+}
+
+.orders-table td.price-col,
+.orders-table td.date-col {
+  text-align: right;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Product Cell */
+.product-cell {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.product-img {
+  width: 260px;
+  height: 160px;
+  object-fit: contain;
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  flex-shrink: 0;
+}
+
+.product-name strong {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #1f2937;
+}
+
+/* Status */
+.status {
+  padding: 8px 22px;
+  border-radius: 50px;
+  font-size: 0.97rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status.shipped {
+  background: #10b981;
+  color: white;
+}
+
+/* ==================== FIXED RESPONSIVE RULES ==================== */
+@media (max-width: 1100px) {
+  .product-img {
+    width: 180px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-cell {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .product-img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+}

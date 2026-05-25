@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Smart Tech Admin</title>
+  <link rel="stylesheet" href="../CSS/admin.css">
+  <link rel="stylesheet" href="../CSS/adDashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sb-logo">Smart Tech <span>Admin Panel</span></div>
+    <div class="sb-nav">
+      <div class="sb-label">Main</div>
+      <a href="adminDashboard.html" class="sb-item active"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="adminProducts.html"  class="sb-item"><i class="fa-solid fa-box"></i> Products</a>
+      <a href="adminOrders.html"    class="sb-item"><i class="fa-solid fa-cart-shopping"></i> Orders</a>
+      <a href="adminUsers.html"     class="sb-item"><i class="fa-solid fa-users"></i> Customers</a>
+    </div>
+    <div class="sb-bottom">
+      <div class="admin-badge">
+        <div class="admin-av">A</div>
+        <div class="admin-info">Admin <span>smarttech@admin.com</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title">Dashboard</div>
+      <div class="topbar-right">
+        <div class="date-chip"><i class="fa-solid fa-calendar" style="margin-right:6px;"></i>May 2026</div>
+        <div class="notif-btn"><i class="fa-solid fa-bell"></i><div class="notif-dot"></div></div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Stat Cards -->
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon ic-purple"><i class="fa-solid fa-peso-sign"></i></div>
+          <div class="stat-label">Total Sales</div>
+          <div class="stat-value">₱284,500</div>
+          <div class="stat-sub"><i class="fa-solid fa-trending-up"></i> +12.4% this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon ic-green"><i class="fa-solid fa-cart-shopping"></i></div>
+          <div class="stat-label">Total Orders</div>
+          <div class="stat-value">1,248</div>
+          <div class="stat-sub"><i class="fa-solid fa-trending-up"></i> +8.1% this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon ic-amber"><i class="fa-solid fa-box"></i></div>
+          <div class="stat-label">Products</div>
+          <div class="stat-value">94</div>
+          <div class="stat-sub muted"><i class="fa-solid fa-minus"></i> 6 low stock</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon ic-blue"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-label">Customers</div>
+          <div class="stat-value">3,671</div>
+          <div class="stat-sub"><i class="fa-solid fa-trending-up"></i> +5.3% this month</div>
+        </div>
+      </div>
+
+      <!-- Chart + Recent Orders -->
+      <div class="bottom-row">
+
+        <!-- Sales Chart -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Sales Overview</div>
+            <div class="period-tabs">
+              <button class="pt">Week</button>
+              <button class="pt active">Month</button>
+              <button class="pt">Year</button>
+            </div>
+          </div>
+          <div style="padding: 20px;">
+            <div style="position: relative; height: 260px;">
+              <canvas id="salesChart"
+                role="img"
+                aria-label="Monthly sales bar chart Jan–May 2026. Jan ₱38k, Feb ₱45k, Mar ₱52k, Apr ₱61k, May ₱88k.">
+                Monthly sales: Jan ₱38k, Feb ₱45k, Mar ₱52k, Apr ₱61k, May ₱88.5k.
+              </canvas>
+            </div>
+            <div class="chart-legend">
+              <span style="display:flex;align-items:center;gap:5px;"><span class="legend-dot" style="background:#4E0B99;"></span>Sales (₱)</span>
+              <span style="display:flex;align-items:center;gap:5px;"><span class="legend-dot" style="background:#d8b4fe;"></span>Target (₱)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Recent Orders</div>
+          </div>
+          <div class="order-row">
+            <div class="order-thumb"><i class="fa-solid fa-microchip"></i></div>
+            <div>
+              <div class="order-name">RTX 4090 Windforce</div>
+              <div class="order-meta">John D. · 2 hrs ago</div>
+            </div>
+            <div class="order-right">
+              <div class="order-price">₱5,000</div>
+              <span class="pill pill-shipped">Shipped</span>
+            </div>
+          </div>
+          <div class="order-row">
+            <div class="order-thumb"><i class="fa-solid fa-cpu"></i></div>
+            <div>
+              <div class="order-name">AMD Ryzen 9 7950X</div>
+              <div class="order-meta">Maria S. · 5 hrs ago</div>
+            </div>
+            <div class="order-right">
+              <div class="order-price">₱28,000</div>
+              <span class="pill pill-process">Processing</span>
+            </div>
+          </div>
+          <div class="order-row">
+            <div class="order-thumb"><i class="fa-solid fa-memory"></i></div>
+            <div>
+              <div class="order-name">Corsair 32GB DDR5</div>
+              <div class="order-meta">Carlo R. · 1 day ago</div>
+            </div>
+            <div class="order-right">
+              <div class="order-price">₱12,500</div>
+              <span class="pill pill-pending">Pending</span>
+            </div>
+          </div>
+          <div class="order-row">
+            <div class="order-thumb"><i class="fa-solid fa-desktop"></i></div>
+            <div>
+              <div class="order-name">ASUS ROG Strix B650E</div>
+              <div class="order-meta">Ana L. · 1 day ago</div>
+            </div>
+            <div class="order-right">
+              <div class="order-price">₱18,000</div>
+              <span class="pill pill-shipped">Shipped</span>
+            </div>
+          </div>
+          <div class="order-row">
+            <div class="order-thumb"><i class="fa-solid fa-bolt"></i></div>
+            <div>
+              <div class="order-name">Seasonic 850W Gold</div>
+              <div class="order-meta">Ben T. · 2 days ago</div>
+            </div>
+            <div class="order-right">
+              <div class="order-price">₱7,200</div>
+              <span class="pill pill-process">Processing</span>
+            </div>
+          </div>
+          <a href="admin-orders.html" class="view-all-link">View all orders →</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+  new Chart(document.getElementById('salesChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Jan','Feb','Mar','Apr','May'],
+      datasets: [
+        {
+          label: 'Sales',
+          data: [38000, 45000, 52000, 61000, 88500],
+          backgroundColor: '#4E0B99',
+          borderRadius: 7,
+          borderSkipped: false,
+          barPercentage: 0.55
+        },
+        {
+          label: 'Target',
+          data: [50000, 50000, 60000, 70000, 80000],
+          backgroundColor: '#e0d4ff',
+          borderRadius: 7,
+          borderSkipped: false,
+          barPercentage: 0.55
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: { label: ctx => ' ₱' + ctx.raw.toLocaleString() }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#9ca3af' } },
+        y: {
+          grid: { color: '#f5f0ff' },
+          ticks: {
+            font: { size: 11 },
+            color: '#9ca3af',
+            callback: v => '₱' + (v / 1000).toFixed(0) + 'k'
+          }
+        }
+      }
+    }
+  });
+
+  document.querySelectorAll('.pt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pt').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

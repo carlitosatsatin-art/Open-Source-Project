@@ -1,0 +1,142 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  width: 900px;
+  height: 500px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Left Gradient Panel */
+.left-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6a11cb, #f83600);
+}
+
+/* Rotated image inside left panel */
+.rotate {
+  width: 450px;
+  height: auto;
+  transform: scaleX(-1) rotate(180deg);
+}
+
+/* Right Login Panel */
+.right-panel {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  width: 80%;
+  max-width: 350px;
+}
+
+.login-box h2 {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.login-box p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.login-box label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+a {
+  text-decoration: none;   /* removes underline */
+  color: white;              /* changes text color */
+}
+
+/* Hover effect */
+a:hover {
+  text-decoration: underline; /* underline only on hover */
+}
+
+.options {
+  display: flex;
+  justify-content: space-between; /* label left, link right */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;    /* prevent text from breaking into a new line */
+  font-size: 14px;
+  color: #333;
+}
+
+.options input[type="checkbox"] {
+  vertical-align: middle; /* ensures checkbox aligns with text */
+  margin: 0;              /* remove default offset */
+}
+
+
+.options a {
+  color: #6a11cb;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #6a11cb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #5a0fb3;
+}
+
+.signup {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.signup a {
+  color: #6a11cb;
+  text-decoration: none;
+  font-weight: bold;
+}

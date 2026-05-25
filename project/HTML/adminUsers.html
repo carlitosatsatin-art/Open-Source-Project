@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers - Smart Tech Admin</title>
+  <link rel="stylesheet" href="../CSS/admin.css">
+   <link rel="stylesheet" href="../CSS/adUsers.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sb-logo">Smart Tech <span>Admin Panel</span></div>
+    <div class="sb-nav">
+      <div class="sb-label">Main</div>
+      <a href="adminDashboard.html" class="sb-item"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="adminProducts.html" class="sb-item"><i class="fa-solid fa-box"></i> Products</a>
+      <a href="adminOrders.html"    class="sb-item"><i class="fa-solid fa-cart-shopping"></i> Orders</a>
+      <a href="adminUsers.html"     class="sb-item active"><i class="fa-solid fa-users"></i> Customers</a>
+    </div>
+    <div class="sb-bottom">
+      <div class="admin-badge">
+        <div class="admin-av">A</div>
+        <div class="admin-info">Admin <span>smarttech@admin.com</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title">Customers</div>
+      <div class="topbar-right">
+        <div class="date-chip"><i class="fa-solid fa-calendar" style="margin-right:6px;"></i>May 2026</div>
+        <div class="notif-btn"><i class="fa-solid fa-bell"></i><div class="notif-dot"></div></div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Stat Cards -->
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon ic-purple"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-label">Total Customers</div>
+          <div class="stat-value">3,671</div>
+          <div class="stat-sub"><i class="fa-solid fa-trending-up"></i> +5.3% this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon ic-green"><i class="fa-solid fa-user-check"></i></div>
+          <div class="stat-label">Active</div>
+          <div class="stat-value">3,598</div>
+          <div class="stat-sub muted"><i class="fa-solid fa-minus"></i> Currently enabled</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon ic-red"><i class="fa-solid fa-user-xmark"></i></div>
+          <div class="stat-label">Inactive</div>
+          <div class="stat-value">73</div>
+          <div class="stat-sub muted"><i class="fa-solid fa-minus"></i> Currently disabled</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon ic-blue"><i class="fa-solid fa-user-plus"></i></div>
+          <div class="stat-label">New This Month</div>
+          <div class="stat-value">194</div>
+          <div class="stat-sub"><i class="fa-solid fa-trending-up"></i> Growing steadily</div>
+        </div>
+      </div>
+
+      <!-- Customers Table -->
+      <div class="card">
+        <div class="filter-bar">
+          <div class="search-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search by name or email…" oninput="filterTable()">
+          </div>
+          <select class="filter-select" id="statusFilter" onchange="filterTable()">
+            <option value="">All Status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Orders</th>
+                <th>Total Spent</th>
+                <th>Registered</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="usersBody">
+              <!-- Rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+  let users = [
+    { id:1,  name:'Mark Francis Lampit',  email:'mark@email.com',   phone:'09329676767', orders:12, spent:85000,  registered:'Jan 15, 2025', active:true  },
+    { id:2,  name:'John Dela Cruz',       email:'john@email.com',   phone:'09171234567', orders:5,  spent:32000,  registered:'Feb 2, 2025',  active:true  },
+    { id:3,  name:'Maria Santos',         email:'maria@email.com',  phone:'09281234567', orders:8,  spent:67500,  registered:'Mar 10, 2025', active:true  },
+    { id:4,  name:'Carlo Reyes',          email:'carlo@email.com',  phone:'09351234567', orders:3,  spent:25000,  registered:'Apr 5, 2025',  active:false },
+    { id:5,  name:'Ana Lopez',            email:'ana@email.com',    phone:'09201234567', orders:15, spent:120000, registered:'Jan 20, 2025', active:true  },
+    { id:6,  name:'Benjamin Torres',      email:'ben@email.com',    phone:'09161234567', orders:2,  spent:14400,  registered:'May 1, 2025',  active:true  },
+    { id:7,  name:'Grace Villanueva',     email:'grace@email.com',  phone:'09091234567', orders:7,  spent:48500,  registered:'Mar 22, 2025', active:true  },
+    { id:8,  name:'Rico Magno',           email:'rico@email.com',   phone:'09181234567', orders:1,  spent:4500,   registered:'May 10, 2025', active:false },
+    { id:9,  name:'Liza Navarro',         email:'liza@email.com',   phone:'09271234567', orders:20, spent:215000, registered:'Dec 5, 2024',  active:true  },
+    { id:10, name:'Jun Bautista',         email:'jun@email.com',    phone:'09151234567', orders:6,  spent:52000,  registered:'Feb 28, 2025', active:true  },
+    { id:11, name:'Cathy Flores',         email:'cathy@email.com',  phone:'09321234567', orders:9,  spent:76500,  registered:'Jan 30, 2025', active:true  },
+    { id:12, name:'Pedro Manansala',      email:'pedro@email.com',  phone:'09451234567', orders:0,  spent:0,      registered:'May 22, 2026', active:false },
+  ];
+
+  function initials(name) {
+    return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  }
+
+  function renderTable(data) {
+    const tbody = document.getElementById('usersBody');
+    tbody.innerHTML = data.map(u => `
+      <tr>
+        <td>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="cust-av-lg">${initials(u.name)}</div>
+            <div>
+              <div class="cust-name">${u.name}</div>
+              <div class="cust-email">${u.email}</div>
+            </div>
+          </div>
+        </td>
+        <td style="font-size:12px;color:#6b7280;">${u.phone}</td>
+        <td style="text-align:center;">
+          <span style="background:#f3e8ff;color:#4E0B99;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;">${u.orders}</span>
+        </td>
+        <td style="font-weight:700;color:#4E0B99;">₱${u.spent.toLocaleString()}</td>
+        <td style="font-size:12px;color:#6b7280;">${u.registered}</td>
+        <td>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <button class="toggle-btn ${u.active ? 'on' : 'off'}" 
+                    title="${u.active ? 'Disable account' : 'Enable account'}"
+                    onclick="toggleUser(${u.id}, this)">
+            </button>
+            <span style="font-size:12px;font-weight:600;color:${u.active ? '#065f46' : '#9ca3af'};">
+              ${u.active ? 'Active' : 'Inactive'}
+            </span>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  function filterTable() {
+    const q  = document.getElementById('searchInput').value.toLowerCase();
+    const st = document.getElementById('statusFilter').value;
+    const filtered = users.filter(u =>
+      (u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q)) &&
+      (st === '' || (st === 'active' ? u.active : !u.active))
+    );
+    renderTable(filtered);
+  }
+
+  function toggleUser(id, btn) {
+    const u = users.find(x => x.id === id);
+    if (!u) return;
+    u.active = !u.active;
+    btn.className = 'toggle-btn ' + (u.active ? 'on' : 'off');
+    btn.title = u.active ? 'Disable account' : 'Enable account';
+    const label = btn.nextElementSibling;
+    label.style.color = u.active ? '#065f46' : '#9ca3af';
+    label.textContent = u.active ? 'Active' : 'Inactive';
+    showToast(`${u.name} is now ${u.active ? 'active' : 'inactive'}.`, u.active ? 'success' : '');
+  }
+
+  function showToast(msg, type = '') {
+    const t = document.getElementById('toast');
+    t.innerHTML = '<i class="fa-solid fa-circle-check" style="margin-right:6px;"></i>' + msg;
+    t.className = 'toast show ' + type;
+    setTimeout(() => t.className = 'toast', 3000);
+  }
+
+  renderTable(users);
+</script>
+</body>
+</html>
